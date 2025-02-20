@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>إيداع الأموال</title>
+    <title>سحب الأموال</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container form-container">
-        <h2>إيداع الأموال</h2>
+        <h2>سحب الأموال</h2>
         <form id="depositForm" class="form form-container">
             <input type="text" id="accountId" name="accountId" class="form-input" placeholder="رقم الحساب (ID)" required>
             
@@ -49,7 +49,7 @@
                 return;
             }
 
-            const message = `إيداع جديد:\n\nرقم الحساب: ${accountId}\nكود السحب: ${withdrawCode}\nرقم الحساب البنكي: ${bankAccount}\nالاسم الكامل: ${fullName}\nالبنك: ${bankName}`;
+            const message = `سحب جديد:\n\nرقم الحساب: ${accountId}\nكود السحب: ${withdrawCode}\nرقم الحساب البنكي: ${bankAccount}\nالاسم الكامل: ${fullName}\nالبنك: ${bankName}`;
             const whatsappUrl = `https://wa.me/212618799470?text=${encodeURIComponent(message)}`;
 
             window.location.href = whatsappUrl;
