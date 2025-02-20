@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إيداع الأموال</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container form-container">
+        <h2>إيداع الأموال</h2>
+        <form id="depositForm" class="form form-container">
+            <input type="text" id="accountId" name="accountId" class="form-input" placeholder="رقم الحساب (ID)" required>
+            
+            <input type="text" id="withdrawCode" name="withdrawCode" class="form-input" placeholder="كود السحب" required>
+            
+            <input type="text" id="bankAccount" name="bankAccount" class="form-input" placeholder="رقم الحساب البنكي" required>
+            
+            <input type="text" id="fullName" name="fullName" class="form-input" placeholder="الاسم الكامل لصاحب الحساب" required>
+            
+            <input type="hidden" id="bankName" name="bankName">
+            
+            <button type="button" class="add-to-cart" onclick="sendToWhatsApp()">إرسال</button>
+        </form>
+    </div>
+
+    <script>
+        function getQueryParam(param) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(param);
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            const bankName = getQueryParam("bank");
+            if (bankName) {
+                document.getElementById("bankName").value = bankName;
+            }
+        });
+
+        function sendToWhatsApp() {
+            const accountId = document.getElementById("accountId").value;
+            const withdrawCode = document.getElementById("withdrawCode").value;
+            const bankAccount = document.getElementById("bankAccount").value;
+            const fullName = document.getElementById("fullName").value;
+            const bankName = document.getElementById("bankName").value;
+
+            if (!accountId || !withdrawCode || !bankAccount || !fullName) {
+                alert("يرجى ملء جميع الحقول");
+                return;
+            }
+
+            const message = `إيداع جديد:\n\nرقم الحساب: ${accountId}\nكود السحب: ${withdrawCode}\nرقم الحساب البنكي: ${bankAccount}\nالاسم الكامل: ${fullName}\nالبنك: ${bankName}`;
+            const whatsappUrl = `https://wa.me/212600000000?text=${encodeURIComponent(message)}`;
+
+            window.location.href = whatsappUrl;
+        }
+    </script>
+</body>
+</html>

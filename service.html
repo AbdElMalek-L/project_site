@@ -48,7 +48,7 @@
                 <div class="address-container" id="addressContainer"></div>
                 <img id="dynamicLogoImg" src="" alt="Brand Logo">
                 <p id="dynamicDescription"></p>
-                <a href="servicef.html">
+                <a id="whatsappLink" href="servicef.html?brand=">
                     <button class="whatsapp">متابعة </button>
                 </a>
             </div>
@@ -133,7 +133,7 @@
                 document.getElementById('dynamicLogoImg').src = brand.logo;
                 document.getElementById('dynamicDescription').textContent = brand.description;
                 document.getElementById('addressContainer').innerHTML = brand.address || '';
-            }
+                document.getElementById('whatsappLink').href = `servicef.html?brand=${encodeURIComponent(brand.name)}`;            }
         });
 
         function toggleMobileMenu() {

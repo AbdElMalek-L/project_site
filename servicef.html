@@ -32,7 +32,7 @@
         <section class="form-container">
             <input type="text" class="form-input" id="userName" placeholder="رقم الحساب (ID)">
             <h2 class="warning">ملاحظة :</h2>
-            <h2 class="note"> أرسل الوصل عبر واتساب</h2>
+            <h2 class="note">إرسال  وصل التحويل  عبر الواتساب</h2>
 
             <button class="whatsapp" onclick="sendToWhatsApp()">
                 إرسال عبر واتساب
@@ -57,33 +57,34 @@
     </footer>
 
     <script>
-        function sendToWhatsApp() {
-            const brandName = document.getElementById('brandName').value;
-            const userName = document.getElementById('userName').value;
-            const amount = document.getElementById('amount').value;
-            const phoneNumber = document.getElementById('phoneNumber').value;
+function sendToWhatsApp() {
+    // Get brand name from URL parameters
+    const urlParams = new URLSearchParams(window.location.search);
+    const brandName = urlParams.get('brand');
+    
+    // Get user name from input field
+    const userName = document.getElementById('userName').value;
 
-            if (!brandName || !userName || !amount || !phoneNumber) {
-                alert('يرجى ملء جميع الحقول');
-                return;
-            }
+    // Validate both fields
+    if (!brandName || !userName) {
+        alert('يرجى ملء رقم الحساب (ID)');
+        return;
+    }
 
-            const message = `طلب جديد:
+    // Create message template
+    const message = `طلب جديد:
 العلامة التجارية: ${brandName}
-الاسم: ${userName}
-المبلغ: ${amount}
-رقم الهاتف: ${phoneNumber}`;
+ID: ${userName}`;
 
-            const encodedMessage = encodeURIComponent(message);
-            const whatsappLink = `https://wa.me/212123456789?text=${encodedMessage}`;
-            
-            window.open(whatsappLink, '_blank');
-        }
-
-        function toggleMobileMenu() {
-            const menu = document.querySelector('.mobile-menu');
-            menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
-        }
+    // Encode message for URL
+    const encodedMessage = encodeURIComponent(message);
+    
+    // Create WhatsApp link
+    const whatsappLink = `https://wa.me/212618799470?text=${encodedMessage}`;
+    
+    // Open in new tab
+    window.open(whatsappLink, '_blank');
+}
     </script>
 </body>
 </html>
