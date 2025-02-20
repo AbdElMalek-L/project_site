@@ -17,7 +17,7 @@
                     <div class="product-info">
                         <h3>التعبئة السريعة</h3>
                         <p class="price">07.00.22.80.22</p>
-                        <a class="add-to-cart" data-bank="Inwi%20Morocco">متابعة</a>
+                        <a class="add-to-cart" data-bank="Inwi">متابعة</a>
                     </div>
                 </div>
                 
@@ -26,7 +26,7 @@
                     <div class="product-info">
                         <h3>INWI Money</h3>
                         <p class="price">06.18.79.94.70</p>
-                        <a class="add-to-cart" data-bank="INWI%20Money">متابعة</a>
+                        <a class="add-to-cart" data-bank="INWIMoney">متابعة</a>
                     </div>
                 </div>
                 
@@ -35,7 +35,7 @@
                     <div class="product-info">
                         <h3>Attijariwafa bank</h3>
                         <p class="price">007575000788400030310788</p>
-                        <a class="add-to-cart" data-bank="Attijariwafa%20bank">متابعة</a>
+                        <a class="add-to-cart" data-bank="Attijariwafabank">متابعة</a>
                     </div>
                 </div>
                 
@@ -44,7 +44,7 @@
                     <div class="product-info">
                         <h3>التعبئة السريعة</h3>
                         <p class="price">06.12.75.61.55</p>
-                        <a class="add-to-cart" data-bank="Orange%20express">متابعة</a>
+                        <a class="add-to-cart" data-bank="Orange express">متابعة</a>
                     </div>
                 </div>
         
@@ -54,7 +54,7 @@
                     <div class="product-info">
                         <h3>CIH Bank</h3>
                         <p class="price">3188317211016200</p>
-                        <a  data-bank="CIH%20Bank" class="add-to-cart">متابعة</a>
+                        <a  data-bank="CIHBank" class="add-to-cart">متابعة</a>
                     </div>
                 </div>
                 <div class="product-card">
@@ -62,7 +62,7 @@
                     <div class="product-info">
                         <h3>AlBarid Bank</h3>
                         <p class="price">11915391</p>
-                        <a  data-bank="AlBarid%20Bank" class="add-to-cart">متابعة</a>
+                        <a  data-bank="AlBaridBank" class="add-to-cart">متابعة</a>
                     </div>
                 </div>
                 <div class="product-card">
@@ -118,7 +118,7 @@
             buttons.forEach(button => {
                 const bank = button.getAttribute('data-bank');
                 let targetPage = serviceType == 1 ? 'servicef.html' : 'depositef.html';
-                button.href = `${targetPage}?brand=${encodeURIComponent(brand)}&bank=${encodeURIComponent(bank)}`;
+                button.href = `${targetPage}?brand=${brand}&bank=${encodeURIComponent(bank)}`;
             });
         });
     </script>
