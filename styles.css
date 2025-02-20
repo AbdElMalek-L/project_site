@@ -117,17 +117,6 @@ body {
     cursor: pointer;
     transition: background-color 0.3s;
 }
-.whatsapp {
-    background: rgb(10, 221, 52);
-    color: #ffffff;
-    border: none;
-    padding: 16px 32px;
-    border-radius: 9999px;
-    font-weight: 600;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
 
 .cta-button:hover {
     background: #f3f4f6;
@@ -168,7 +157,7 @@ body {
 
 /* Features Section */
 .features {
-    background: white;
+    background: rgb(232, 241, 232);
     padding: 80px 0;
 }
 
@@ -187,16 +176,18 @@ body {
 .feature-card {
     background: #ffffff;
     padding: 24px;
-    border-radius: 8px;
+    border-radius: 20px;
     text-align: center;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 6px rgba(118, 118, 118, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease, border-radius 0.3s ease;
     
 }
 
 .feature-card:hover {
     transform: translateY(-10px);
-    box-shadow: 0 8px 15px rgba(12, 58, 45, 0.3), 0 4px 6px rgba(12, 58, 45, 0.2);
+    border: 15px solid #0fbb1d4e;
+    border-radius: 30px;
+    box-shadow: 0 8px 15px rgba(14, 195, 59, 0.3), 0 4px 6px rgba(12, 58, 45, 0.2);
 }
 a{
     text-decoration: none;
@@ -635,15 +626,18 @@ body {
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 4rem;
+            font-size: 3rem;
             font-weight: bold;
-            color: #0fbb1d;
+            color: #ffffff;
         }
 
         /* Styling for the logo image */
         #dynamicLogoImg {
             max-width: 80%;
             max-height: 80%;
+            background-color: #ffffff;
+            border-radius: 20px;
+
         }
 
         /* Styling for the dynamic description */
@@ -651,5 +645,22 @@ body {
             font-size: 1.2em;
             font-style: italic;
             margin-top: 10px;
-            color: #ff6767; /* Light blue text */
+            color: #f6ff00; /* Light blue text */
+        }
+
+        .btn-service{
+            margin: 40px 0px 0px 30px ;
+            background: #157b3c;
+            color: #ffffff;
+            border: none;
+            padding: 16px 32px;
+            border-radius: 9999px;
+            font-weight: 600;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .retrie{
+            background: #2369ff;
         }

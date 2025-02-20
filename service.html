@@ -24,11 +24,39 @@
 <body>
     <!-- Dynamic Logo -->
     
-    <header>
-        <span id="dynamicTitle">CHARGE RAPIDE</span>
-        <div id="dynamicLogo"></div>
-        <img id="dynamicLogoImg" src="" alt="Brand Logo">
-        <p id="dynamicDescription"></p>
+    <header class="hero">
+        <nav class="navbar container">
+            <div class="logo">
+                <span>CHARGE RAPIDE</span>
+            </div>
+            <div class="nav-links">
+
+                <a href="#contact">اتصل بنا</a>
+            </div>
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+
+        <div class="mobile-menu">
+            <a href="#contact">اتصل بنا</a>
+        </div>
+
+        <div class="hero-content container">
+            <div class="hero-text">
+                <h1 id="serviceTitle">شحن متاح عبر ID</h1>
+                <div id="dynamicLogo"></div>
+
+                <img id="dynamicLogoImg" src="" alt="Brand Logo">
+                <p id="dynamicDescription"></p>
+                <a href="https://wa.me/212618799470">
+                    <button class="whatsapp">واتساب</button>
+                </a>
+            </div>
+
+        </div>
     </header>
 
     <!-- Service Section -->
@@ -55,6 +83,7 @@ const brandDetails = {
 // Get the serviceId from the URL
 const urlParams = new URLSearchParams(window.location.search);
 const serviceId = urlParams.get('id');
+const serviceService = urlParams.get('service');
 
 // Update the page content if the serviceId is valid
 if (serviceId && brandDetails[serviceId]) {
@@ -67,6 +96,24 @@ if (serviceId && brandDetails[serviceId]) {
     const logoImg = document.getElementById('dynamicLogoImg');
     logoImg.src = brand.logo;
     logoImg.alt = brand.name;
+    if(serviceService == 1){
+        document.getElementById('serviceTitle').textContent = `${brand.name} شحن سريع`;
+    } else if( serviceService == 2){
+        document.getElementById('serviceTitle').textContent = `${brand.name} سحب سريع`;
+    }
+    // Update the brand name
+
+    // Update the description
+    document.getElementById('dynamicDescription').textContent = brand.description;
+}if (serviceService && brandDetails[serviceService]) {
+    const service = brandDetails[serviceService];
+
+    // Update the title
+
+    // Update the logo image
+    const logoImg = document.getElementById('dynamicLogoImg');
+    logoImg.src = brand.logo;
+    logoImg.alt = brand.name;
 
     // Update the brand name
     document.getElementById('dynamicLogo').textContent = brand.name;
@@ -74,6 +121,7 @@ if (serviceId && brandDetails[serviceId]) {
     // Update the description
     document.getElementById('dynamicDescription').textContent = brand.description;
 }
+
     </script>
 </body>
 </html>
