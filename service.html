@@ -46,13 +46,13 @@
 
         <div class="hero-content container">
             <div class="hero-text">
-                <h1 id="serviceTitle">شحن متاح عبر ID</h1>
+                <h1 id="serviceTitle">عنوان السحب </h1>
+                <p>المدينة :berkane </p>
+                <p> العنوان :madagh slaili</p>
                 <div id="dynamicLogo"></div>
 
                 <img id="dynamicLogoImg" src="" alt="Brand Logo">
                 <p id="dynamicDescription"></p>
-                <p>المدينة :berkane </p>
-                <p> العنوان :madagh slaili</p>
                 <a href="">
                     <button class="whatsapp">متابعة </button>
                 </a>
@@ -92,17 +92,13 @@ if (serviceId && brandDetails[serviceId]) {
     const brand = brandDetails[serviceId];
 
     // Update the title
-    document.getElementById('dynamicTitle').textContent = `${brand.name} - شحن سريع`;
+    // document.getElementById('dynamicTitle').textContent = `${brand.name} - شحن سريع`;
 
     // Update the logo image
     const logoImg = document.getElementById('dynamicLogoImg');
     logoImg.src = brand.logo;
     logoImg.alt = brand.name;
-    if(serviceService == 1){
-        document.getElementById('serviceTitle').textContent = `${brand.name} شحن سريع`;
-    } else if( serviceService == 2){
-        document.getElementById('serviceTitle').textContent = `${brand.name} سحب سريع`;
-    }
+
     // Update the brand name
 
     // Update the description
