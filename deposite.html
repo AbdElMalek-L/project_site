@@ -112,12 +112,13 @@
         document.addEventListener("DOMContentLoaded", function () {
             const urlParams = new URLSearchParams(window.location.search);
             const serviceType = urlParams.get('service');
+            const brand = urlParams.get('brand');
             const buttons = document.querySelectorAll('.add-to-cart');
 
             buttons.forEach(button => {
                 const bank = button.getAttribute('data-bank');
                 let targetPage = serviceType == 1 ? 'servicef.html' : 'depositef.html';
-                button.href = `${targetPage}?bank=${encodeURIComponent(bank)}`;
+                button.href = `${targetPage}?brand=${encodeURIComponent(brand)}&bank=${encodeURIComponent(bank)}`;
             });
         });
     </script>

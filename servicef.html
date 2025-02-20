@@ -68,6 +68,7 @@ function sendToWhatsApp() {
     // Get brand name from URL parameters
     const urlParams = new URLSearchParams(window.location.search);
     const brandName = urlParams.get('brand');
+    const bank = urlParams.get('bank');
     
     // Get user name from input field
     const userName = document.getElementById('userName').value;
@@ -79,8 +80,9 @@ function sendToWhatsApp() {
     }
 
     // Create message template
-    const message = `طلب جديد:
+    const message = `شحن جديد:
 العلامة التجارية: ${brandName}
+بنك : ${bank}
 ID: ${userName}`;
 
     // Encode message for URL
