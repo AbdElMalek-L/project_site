@@ -108,19 +108,26 @@
     </footer>
 
     <script src="script.js"></script>
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const urlParams = new URLSearchParams(window.location.search);
-            const serviceType = urlParams.get('service');
-            const brand = urlParams.get('brand');
-            const buttons = document.querySelectorAll('.add-to-cart');
-
-            buttons.forEach(button => {
-                const bank = button.getAttribute('data-bank');
-                let targetPage = serviceType == 1 ? 'servicef.html' : 'depositef.html';
-                button.href = `${targetPage}?brand=${brand}&bank=${encodeURIComponent(bank)}`;
-            });
+    <script>document.addEventListener("DOMContentLoaded", function () {
+        const urlParams = new URLSearchParams(window.location.search);
+        const serviceType = urlParams.get('service');
+        const brand = urlParams.get('brand');
+    
+        // Validate required parameters
+        if (!serviceType || !brand) {
+            console.error("Missing required parameters: 'service' or 'brand'");
+            // Redirect to an error page or fallback
+            window.location.href = "index.html";
+            return;
+        }
+    
+        const buttons = document.querySelectorAll('.add-to-cart');
+        buttons.forEach(button => {
+            const bank = button.getAttribute('data-bank');
+            const targetPage = serviceType === "1" ? 'servicef.html' : 'depositef.html'; // Use strict comparison
+            button.href = `${targetPage}?brand=${encodeURIComponent(brand)}&bank=${encodeURIComponent(bank)}`;
         });
+    });
     </script>
 </body>
 </html>

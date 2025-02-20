@@ -106,29 +106,39 @@
         };
 
         document.addEventListener('DOMContentLoaded', () => {
-            const urlParams = new URLSearchParams(window.location.search);
-            const serviceId = urlParams.get('id');
-            const serviceService = urlParams.get('service');
-            let brand;
+    const urlParams = new URLSearchParams(window.location.search);
+    const serviceId = urlParams.get('id');
+    const serviceService = urlParams.get('service');
+    let brand;
+    let brandId;
 
-            if (serviceId && brandDetails[serviceId]) {
-                brand = brandDetails[serviceId];
-            } else if (serviceService && brandDetails[serviceService]) {
-                brand = brandDetails[serviceService];
-            }
+    // Check for valid 'id' parameter
+    if (serviceId !== null && brandDetails.hasOwnProperty(serviceId)) {
+        brandId = serviceId;
+        brand = brandDetails[brandId];
+    }
+    // Check for valid 'service' parameter if 'id' is invalid
+    else if (serviceService !== null && brandDetails.hasOwnProperty(serviceService)) {
+        brandId = serviceService;
+        brand = brandDetails[brandId];
+    }
+    // If no valid parameters, show error
+    else {
+        console.error('Invalid or missing brand ID/service parameter.');
+        // Optionally redirect or display an error message
+        return;
+    }
 
-            if (brand) {
-                document.title = `${brand.name} - شحن سريع`;
-                document.getElementById('dynamicLogoImg').src = brand.logo;
-                document.getElementById('dynamicDescription').textContent = brand.description;
-                document.getElementById('addressContainer').innerHTML = brand.address || '';
-                document.getElementById('whatsappLink').href = `deposite.html?&service=2&brand=${encodeURIComponent(brand.name)}`;            }
-        });
-
-        function toggleMobileMenu() {
-            const menu = document.querySelector('.mobile-menu');
-            menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
-        }
+    // Update page content if brand is found
+    if (brand) {
+        document.title = `${brand.name} - شحن سريع`;
+        document.getElementById('dynamicLogoImg').src = brand.logo;
+        document.getElementById('dynamicDescription').textContent = brand.description;
+        document.getElementById('addressContainer').innerHTML = brand.address || '';
+        document.getElementById('whatsappLink').href = 
+            `deposite.html?service=${brandId}&brand=${encodeURIComponent(brand.name)}`;
+    }
+});
     </script>
 </body>
 </html>
