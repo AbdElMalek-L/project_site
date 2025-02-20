@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إرسال طلب - المجموعة المميزة</title>
+    <link rel="stylesheet" href="styles.css">
+
+</head>
+<body>
+    <header class="hero">
+        <nav class="navbar container">
+            <div class="logo">
+                <span>CHARGE RAPIDE</span>
+            </div>
+            <div class="nav-links">
+                <a href="#contact">اتصل بنا</a>
+            </div>
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+
+        <div class="mobile-menu">
+            <a href="#contact">اتصل بنا</a>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="form-container">
+            <input type="text" class="form-input" id="userName" placeholder="رقم الحساب (ID)">
+            <h2 class="warning">ملاحظة :</h2>
+            <h2 class="note"> أرسل الوصل عبر واتساب</h2>
+
+            <button class="whatsapp" onclick="sendToWhatsApp()">
+                إرسال عبر واتساب
+            </button>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <span>CHARGE RAPIDE</span>
+                </div>
+                <div class="footer-links">
+                    <a href="#">Contact</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 CHARGE RAPIDE. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function sendToWhatsApp() {
+            const brandName = document.getElementById('brandName').value;
+            const userName = document.getElementById('userName').value;
+            const amount = document.getElementById('amount').value;
+            const phoneNumber = document.getElementById('phoneNumber').value;
+
+            if (!brandName || !userName || !amount || !phoneNumber) {
+                alert('يرجى ملء جميع الحقول');
+                return;
+            }
+
+            const message = `طلب جديد:
+العلامة التجارية: ${brandName}
+الاسم: ${userName}
+المبلغ: ${amount}
+رقم الهاتف: ${phoneNumber}`;
+
+            const encodedMessage = encodeURIComponent(message);
+            const whatsappLink = `https://wa.me/212123456789?text=${encodedMessage}`;
+            
+            window.open(whatsappLink, '_blank');
+        }
+
+        function toggleMobileMenu() {
+            const menu = document.querySelector('.mobile-menu');
+            menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+        }
+    </script>
+</body>
+</html>

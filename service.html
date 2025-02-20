@@ -1,7 +1,4 @@
-
-
-
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
@@ -9,28 +6,29 @@
     <title id="dynamicTitle">شحن سريع - المجموعة المميزة</title>
     <link rel="stylesheet" href="styles.css">
     <style>
-        /* Added image positioning styles */
         .feature-card {
             display: flex;
             flex-direction: column;
             align-items: center;
         }
         .feature-icon {
-            order: -1; /* Move image to top */
+            order: -1;
             margin-bottom: 15px;
+        }
+        #dynamicLogoImg {
+            max-width: 200px;
+            height: auto;
+            margin: 15px 0;
         }
     </style>
 </head>
 <body>
-    <!-- Dynamic Logo -->
-    
     <header class="hero">
         <nav class="navbar container">
             <div class="logo">
                 <span>CHARGE RAPIDE</span>
             </div>
             <div class="nav-links">
-
                 <a href="#contact">اتصل بنا</a>
             </div>
             <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
@@ -47,102 +45,32 @@
         <div class="hero-content container">
             <div class="hero-text">
                 <h1 id="serviceTitle">عنوان السحب </h1>
-                <p>المدينة :berkane </p>
-                <p> العنوان :madagh slaili</p>
-                <div id="dynamicLogo"></div>
-
+                <div class="address-container" id="addressContainer"></div>
                 <img id="dynamicLogoImg" src="" alt="Brand Logo">
                 <p id="dynamicDescription"></p>
                 <a href="">
                     <button class="whatsapp">متابعة </button>
                 </a>
             </div>
-
         </div>
     </header>
-
-    <!-- Service Section -->
-
-    <script>
-const brandDetails = {
-    1: {
-        name: '1xBet',
-        logo: 'src/imgs/1xBet-Logo.jpg',
-        description: 'استخدم كود الترويجي JBR49 للحصول على مكافأة 200٪'
-    },
-    2: {
-        name: 'LineBet',
-        logo: 'src/imgs/Linebet.logo.jpg',
-        description: 'استخدم كود الترويجي JBR49 للحصول على المكافأة'
-    },
-    3: {
-        name: 'Pari Pulse',
-        logo: 'src/imgs/paripulse.webp',
-        description: 'استخدم كود الترويجي JBR49 للحصول على مكافأة 200٪'
-    }
-};
-
-// Get the serviceId from the URL
-const urlParams = new URLSearchParams(window.location.search);
-const serviceId = urlParams.get('id');
-const serviceService = urlParams.get('service');
-
-// Update the page content if the serviceId is valid
-if (serviceId && brandDetails[serviceId]) {
-    const brand = brandDetails[serviceId];
-
-    // Update the title
-    // document.getElementById('dynamicTitle').textContent = `${brand.name} - شحن سريع`;
-
-    // Update the logo image
-    const logoImg = document.getElementById('dynamicLogoImg');
-    logoImg.src = brand.logo;
-    logoImg.alt = brand.name;
-
-    // Update the brand name
-
-    // Update the description
-    document.getElementById('dynamicDescription').textContent = brand.description;
-}if (serviceService && brandDetails[serviceService]) {
-    const service = brandDetails[serviceService];
-
-    // Update the title
-
-    // Update the logo image
-    const logoImg = document.getElementById('dynamicLogoImg');
-    logoImg.src = brand.logo;
-    logoImg.alt = brand.name;
-
-    // Update the brand name
-    document.getElementById('dynamicLogo').textContent = brand.name;
-
-    // Update the description
-    document.getElementById('dynamicDescription').textContent = brand.description;
-}
-
-    </script>
-</body>
-</html>
 
     <section id="features" class="features">
         <div class="container">
             <h2>لماذا CHARGE RAPIDE؟</h2>
             <div class="features-grid">
                 <div class="feature-card">
-                    <div class="feature-icon">
-                    </div>
+                    <div class="feature-icon"></div>
                     <h3>أولا</h3>
                     <p>تمن الشحن هو نفس تمن السحب بدون أي اقتطاعات</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">
-                    </div>
+                    <div class="feature-icon"></div>
                     <h3>ثانيا </h3>
                     <p>مثلا رسلتي 100 درهم ، توصلك 10 دولار </p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">
-                    </div>
+                    <div class="feature-icon"></div>
                     <h3>ثالثا </h3>
                     <p>ملي تربح 20 دولار غادي تخلص عليها 20 دولار </p>
                 </div>
@@ -150,9 +78,6 @@ if (serviceId && brandDetails[serviceId]) {
         </div>
     </section>
 
-
-
-    <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
@@ -160,7 +85,6 @@ if (serviceId && brandDetails[serviceId]) {
                     <span>CHARGE RAPIDE</span>
                 </div>
                 <div class="footer-links">
-
                     <a href="#">Contact</a>
                 </div>
             </div>
@@ -170,6 +94,52 @@ if (serviceId && brandDetails[serviceId]) {
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script>
+        const brandDetails = {
+            1: {
+                name: '1xBet',
+                logo: 'src/imgs/1xBet-Logo.jpg',
+                address: "<h4>بالنسبة لعملة الدولار :</h4> <p>المدينة :berkane </p><p> العنوان :madagh slaili</p><h4>بالنسبة لعملة الدرهم :</h4> <p>المدينة :berkane </p><p> العنوان :jbr49shop</p>",
+                description: 'استخدم كود الترويجي JBR49 للحصول على مكافأة 200٪'
+            },
+            2: {
+                name: 'LineBet',
+                logo: 'src/imgs/Linebet.logo.jpg',
+                address: "<h4>Morocco, Berkane, berkane/madagh douar slaili</h4> ",
+                description: 'استخدم كود الترويجي JBR49 للحصول على المكافأة'
+            },
+            3: {
+                name: 'Pari Pulse',
+                logo: 'src/imgs/paripulse.webp',
+                address: "<h4>Morocco, Berkane, jbr49 PP</h4> ",
+                description: 'استخدم كود الترويجي JBR49 للحصول على مكافأة 200٪'
+            }
+        };
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const serviceId = urlParams.get('id');
+            const serviceService = urlParams.get('service');
+            let brand;
+
+            if (serviceId && brandDetails[serviceId]) {
+                brand = brandDetails[serviceId];
+            } else if (serviceService && brandDetails[serviceService]) {
+                brand = brandDetails[serviceService];
+            }
+
+            if (brand) {
+                document.title = `${brand.name} - شحن سريع`;
+                document.getElementById('dynamicLogoImg').src = brand.logo;
+                document.getElementById('dynamicDescription').textContent = brand.description;
+                document.getElementById('addressContainer').innerHTML = brand.address || '';
+            }
+        });
+
+        function toggleMobileMenu() {
+            const menu = document.querySelector('.mobile-menu');
+            menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+        }
+    </script>
 </body>
 </html>
