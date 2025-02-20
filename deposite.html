@@ -5,22 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title id="dynamicTitle">شحن سريع</title>
     <link rel="stylesheet" href="styles.css">
-    <style>
-        /* Added image positioning styles */
-        .feature-card {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        .feature-icon {
-            order: -1; /* Move image to top */
-            margin-bottom: 15px;
-        }
-    </style>
 </head>
 <body>
     
-    <!-- Collection Section -->
     <section id="collection" class="collection">
         <div class="container">
             <h2>طريقة الدفع</h2>
@@ -30,7 +17,7 @@
                     <div class="product-info">
                         <h3>التعبئة السريعة</h3>
                         <p class="price">07.00.22.80.22</p>
-                        <a href="depositef.html?bank=Inwi%20Morocco" class="add-to-cart">متابعة</a>
+                        <a class="add-to-cart" data-bank="Inwi%20Morocco">متابعة</a>
                     </div>
                 </div>
                 
@@ -39,34 +26,35 @@
                     <div class="product-info">
                         <h3>INWI Money</h3>
                         <p class="price">06.18.79.94.70</p>
-                        <a href="depositef.html?bank=INWI%20Money" class="add-to-cart">متابعة</a>
+                        <a class="add-to-cart" data-bank="INWI%20Money">متابعة</a>
                     </div>
                 </div>
-
+                
                 <div class="product-card">
                     <img src="src/imgs/attijari-container.png" alt="Attijariwafa bank">
                     <div class="product-info">
                         <h3>Attijariwafa bank</h3>
                         <p class="price">007575000788400030310788</p>
-                        <a href="depositef.html?bank=Attijariwafa%20bank" class="add-to-cart">متابعة</a>
+                        <a class="add-to-cart" data-bank="Attijariwafa%20bank">متابعة</a>
                     </div>
                 </div>
-
+                
                 <div class="product-card">
                     <img src="src/imgs/31951.png" alt="Orange express">
                     <div class="product-info">
                         <h3>التعبئة السريعة</h3>
                         <p class="price">06.12.75.61.55</p>
-                        <a href="depositef.html?bank=Orange%20express" class="add-to-cart">متابعة</a>
+                        <a class="add-to-cart" data-bank="Orange%20express">متابعة</a>
                     </div>
                 </div>
+        
 
                 <div class="product-card">
                     <img src="src/imgs/21951.png" alt="CIH Bank">
                     <div class="product-info">
                         <h3>CIH Bank</h3>
                         <p class="price">3188317211016200</p>
-                        <a href="depositef.html?bank=CIH%20Bank" class="add-to-cart">متابعة</a>
+                        <a  data-bank="CIH%20Bank" class="add-to-cart">متابعة</a>
                     </div>
                 </div>
                 <div class="product-card">
@@ -74,7 +62,7 @@
                     <div class="product-info">
                         <h3>AlBarid Bank</h3>
                         <p class="price">11915391</p>
-                        <a href="depositef.html?bank=AlBarid%20Bank" class="add-to-cart">متابعة</a>
+                        <a  data-bank="AlBarid%20Bank" class="add-to-cart">متابعة</a>
                     </div>
                 </div>
                 <div class="product-card">
@@ -82,7 +70,7 @@
                     <div class="product-info">
                         <h3>Jibi</h3>
                         <p class="price">06.18.79.94.70</p>
-                        <a href="depositef.html?bank=Jibi" class="add-to-cart">متابعة</a>
+                        <a  data-bank="Jibi" class="add-to-cart">متابعة</a>
                     </div>
                 </div>
             </div>
@@ -133,5 +121,18 @@
     </footer>
 
     <script src="script.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const urlParams = new URLSearchParams(window.location.search);
+            const serviceType = urlParams.get('service');
+            const buttons = document.querySelectorAll('.add-to-cart');
+
+            buttons.forEach(button => {
+                const bank = button.getAttribute('data-bank');
+                let targetPage = serviceType == 1 ? 'servicef.html' : 'depositef.html';
+                button.href = `${targetPage}?bank=${encodeURIComponent(bank)}`;
+            });
+        });
+    </script>
 </body>
 </html>
