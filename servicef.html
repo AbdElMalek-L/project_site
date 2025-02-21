@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>إرسال طلب</title>
-    <link rel="stylesheet" href="styles.css">
-    <style>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>إرسال طلب</title>
+        <link rel="stylesheet" href="styles.css">
+        <style>
         body {
             background: aliceblue;
             font-family: Arial, sans-serif;
@@ -31,47 +31,48 @@
             font-size: 16px;
         }
     </style>
-</head>
-<body>
-    <header class="hero">
-        <nav class="navbar container">
-            <div class="logo">
-                <span>CHARGE RAPIDE</span>
-            </div>
-            <div class="nav-links">
-                <a href="contact.html">اتصل بنا</a>
-            </div>
-        </nav>
-    </header>
-    <main class="container">
-        <div class="container">
-            <h2 class="note">معلومات الحساب البنكي</h2>
-            <div id="bankDetails" class="bank-info">تحميل...</div>
-        </div>
-        <section class="form-container">
-            <input type="text" class="form-input" id="userName" placeholder="رقم الحساب (ID)">
-            <h2 class="note">إرسال وصل التحويل عبر الواتساب</h2>
-            <button class="whatsapp" onclick="sendToWhatsApp()">
-                إرسال عبر واتساب
-            </button>
-        </section>
-    </main>
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-logo">
+    </head>
+    <body>
+        <header class="hero">
+            <nav class="navbar container">
+                <div class="logo">
                     <span>CHARGE RAPIDE</span>
                 </div>
-                <div class="footer-links">
+                <div class="nav-links">
                     <a href="contact.html">اتصل بنا</a>
                 </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 CHARGE RAPIDE. All rights reserved.</p>
-            </div>
+            </nav>
+        </header>
+        <div class="form-container">
+                <h2 class="note">معلومات الحساب البنكي</h2>
+                <div id="bankDetails" class="bank-info">تحميل...</div>
+                    <input type="text" class="form-input" id="userName"
+                        placeholder="رقم الحساب (ID)">
+                    <h2 class="note">إرسال وصل التحويل عبر الواتساب</h2>
+                    <button class="whatsapp" onclick="sendToWhatsApp()">
+                        إرسال عبر واتساب
+                    </button>
+
+                </section>
         </div>
-    </footer>
-    <script>
+            
+
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-logo">
+                        <span>CHARGE RAPIDE</span>
+                    </div>
+                    <div class="footer-links">
+                        <a href="contact.html">اتصل بنا</a>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <p>&copy; 2025 CHARGE RAPIDE. All rights reserved.</p>
+                </div>
+            </div>
+        </footer>
+        <script>
         const urlParams = new URLSearchParams(window.location.search);
         const bank = urlParams.get('bank');
         
@@ -130,5 +131,5 @@
             }
         }
     </script>
-</body>
+    </body>
 </html>
