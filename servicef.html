@@ -43,7 +43,7 @@
                 </div>
             </nav>
         </header>
-        <div class="form-container">
+        <div class="form-container" id="formContainer">
                 <h2 class="note">معلومات الحساب البنكي</h2>
                 <div id="bankDetails" class="bank-info">تحميل...</div>
                     <input type="text" class="form-input" id="userName"
@@ -137,7 +137,9 @@
         }
 
         if(bank == "CashPlus"){
-        document.getElementById("myDiv").style.display = "block";
+            document.getElementById("myDiv").style.display = "block";
+            document.getElementById("formContainer").style.height = "130vh";
+
     }
     
         
