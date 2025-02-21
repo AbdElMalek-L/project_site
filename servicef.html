@@ -52,6 +52,11 @@
                     <button class="whatsapp" onclick="sendToWhatsApp()">
                         إرسال عبر واتساب
                     </button>
+                    <div id="myDiv" style="display: none;">
+                        <h2>مثال عن شرح  طريقة سحب االاموال من اي منصة</h2>
+             <iframe width="100%" height="315" src="https://www.youtube.com/embed/fueeRnlMW6Y?si=akbtV9lAICFAR_8h" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      
+             </div>
 
                 </section>
         </div>
@@ -136,6 +141,10 @@ function sendToWhatsApp() {
     const urlParams = new URLSearchParams(window.location.search);
     const brandName = urlParams.get('brand');
     const bank = urlParams.get('bank');
+
+    if(bank == "CashPlus"){
+        document.getElementById("myDiv").style.display = "block";
+    }
     
     // Get user name from input field
     const userName = document.getElementById('userName').value;
