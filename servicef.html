@@ -130,6 +130,37 @@
                 bankDetailsElement.innerText = "لا توجد معلومات لهذا البنك.";
             }
         }
+        
+function sendToWhatsApp() {
+    // Get brand name from URL parameters
+    const urlParams = new URLSearchParams(window.location.search);
+    const brandName = urlParams.get('brand');
+    const bank = urlParams.get('bank');
+    
+    // Get user name from input field
+    const userName = document.getElementById('userName').value;
+
+    // Validate both fields
+    if (!userName) {
+        alert('يرجى ملء رقم الحساب (ID)');
+        return;
+    }
+
+    // Create message template
+    const message = `شحن جديد:
+العلامة التجارية: ${brandName}
+بنك : ${bank}
+ID: ${userName}`;
+
+    // Encode message for URL
+    const encodedMessage = encodeURIComponent(message);
+    
+    // Create WhatsApp link
+    const whatsappLink = `https://wa.me/212618799470?text=${encodedMessage}`;
+    
+    // Open in new tab
+    window.open(whatsappLink, '_blank');
+}
     </script>
     </body>
 </html>
