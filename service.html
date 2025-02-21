@@ -20,6 +20,36 @@
             height: auto;
             margin: 15px 0;
         }
+        .video-container {
+            position: relative;
+            width: 50%;
+            background-color: black;
+            margin: 20px auto;
+        }
+        video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border: 5px solid #fff;
+        }
+        .video-controls {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+        .video-controls button {
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+            padding: 5px;
+        }
     </style>
 </head>
 <body>
@@ -42,7 +72,7 @@
             <a href="contact.html">اتصل بنا</a>
         </div>
 
-        <div class="hero-content container">
+        <div style="height: fit-content;" class="hero-content container">
             <div class="hero-text">
                 <h2 id="serviceTitle">عنوان السحب </h2>
                 <div class="address-container" id="addressContainer"></div>
@@ -52,17 +82,29 @@
                     <button class="whatsapp">متابعة </button>
                 </a>
             </div>
+            
         </div>
+
+
     </header>
 
     <section id="features" class="features">
         <div class="container">
+            <div class="video-container">
+                <video id="myVideo">
+                    <source src="src/imgs/sahb.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <div class="video-controls">
+                    <button onclick="playPause()">Play/Pause</button>
+                    <button onclick="toggleMute()">Mute/Unmute</button>
+                </div>
+            </div>
             <h2>لماذا CHARGE RAPIDE؟</h2>
             <div class="features-grid">
                 <img class="feature-img" src="src/imgs/1st.jpg" alt="">
                 <img class="feature-img" src="src/imgs/2nd.jpg" alt="">
                 <img class="feature-img" src="src/imgs/3rd.jpg" alt="">
-
             </div>
         </div>
     </section>
@@ -105,40 +147,48 @@
             }
         };
 
+        // Video control functions
+        const video = document.getElementById('myVideo');
+        
+        function playPause() {
+            if (video.paused) {
+                video.play();
+            } else {
+                video.pause();
+            }
+        }
+
+        function toggleMute() {
+            video.muted = !video.muted;
+        }
+
         document.addEventListener('DOMContentLoaded', () => {
-    const urlParams = new URLSearchParams(window.location.search);
-    const serviceId = urlParams.get('id');
-    const serviceService = urlParams.get('service');
-    let brand;
-    let brandId;
+            const urlParams = new URLSearchParams(window.location.search);
+            const serviceId = urlParams.get('id');
+            const serviceService = urlParams.get('service');
+            let brand;
+            let brandId;
 
-    // Check for valid 'id' parameter
-    if (serviceId !== null && brandDetails.hasOwnProperty(serviceId)) {
-        brandId = serviceId;
-        brand = brandDetails[brandId];
-    }
-    // Check for valid 'service' parameter if 'id' is invalid
-    else if (serviceService !== null && brandDetails.hasOwnProperty(serviceService)) {
-        brandId = serviceService;
-        brand = brandDetails[brandId];
-    }
-    // If no valid parameters, show error
-    else {
-        console.error('Invalid or missing brand ID/service parameter.');
-        // Optionally redirect or display an error message
-        return;
-    }
+            if (serviceId !== null && brandDetails.hasOwnProperty(serviceId)) {
+                brandId = serviceId;
+                brand = brandDetails[brandId];
+            } else if (serviceService !== null && brandDetails.hasOwnProperty(serviceService)) {
+                brandId = serviceService;
+                brand = brandDetails[brandId];
+            } else {
+                console.error('Invalid or missing brand ID/service parameter.');
+                return;
+            }
 
-    // Update page content if brand is found
-    if (brand) {
-        document.title = `${brand.name} - شحن سريع`;
-        document.getElementById('dynamicLogoImg').src = brand.logo;
-        document.getElementById('dynamicDescription').textContent = brand.description;
-        document.getElementById('addressContainer').innerHTML = brand.address || '';
-        document.getElementById('whatsappLink').href = 
-            `deposite.html?service=${serviceService}&brand=${encodeURIComponent(brand.name)}`;
-    }
-});
+            if (brand) {
+                document.title = `${brand.name} - شحن سريع`;
+                document.getElementById('dynamicLogoImg').src = brand.logo;
+                document.getElementById('dynamicDescription').textContent = brand.description;
+                document.getElementById('addressContainer').innerHTML = brand.address || '';
+                document.getElementById('whatsappLink').href = 
+                    `deposite.html?service=${serviceService}&brand=${encodeURIComponent(brand.name)}`;
+            }
+        });
     </script>
 </body>
 </html>
