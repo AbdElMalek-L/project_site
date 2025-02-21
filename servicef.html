@@ -135,6 +135,11 @@
                 bankDetailsElement.innerText = "لا توجد معلومات لهذا البنك.";
             }
         }
+
+        if(bank == "CashPlus"){
+        document.getElementById("myDiv").style.display = "block";
+    }
+    
         
 function sendToWhatsApp() {
     // Get brand name from URL parameters
@@ -142,10 +147,7 @@ function sendToWhatsApp() {
     const brandName = urlParams.get('brand');
     const bank = urlParams.get('bank');
 
-    if(bank == "CashPlus"){
-        document.getElementById("myDiv").style.display = "block";
-    }
-    
+
     // Get user name from input field
     const userName = document.getElementById('userName').value;
 
