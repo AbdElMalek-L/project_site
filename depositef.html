@@ -39,38 +39,37 @@
             </div>
         </div>
     </section>
+ <script>
+    function getQueryParam(param) {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get(param);
+    }
 
-    <script>
-        function getQueryParam(param) {
-            const urlParams = new URLSearchParams(window.location.search);
-            return urlParams.get(param);
+    document.addEventListener("DOMContentLoaded", function() {
+        const bankName = getQueryParam("bank");
+        if (bankName) {
+            document.getElementById("bankName").value = bankName;
+        }
+    });
+
+    function sendToWhatsApp() {
+        const accountId = document.getElementById("accountId").value;
+        const withdrawCode = document.getElementById("withdrawCode").value;
+        const bankAccount = document.getElementById("bankAccount").value;
+        const fullName = document.getElementById("fullName").value;
+        const bankName = document.getElementById("bankName").value;
+        const brand = getQueryParam("brand"); // Retrieve brand here
+
+        if (!accountId || !withdrawCode || !bankAccount || !fullName) {
+            alert("يرجى ملء جميع الحقول");
+            return;
         }
 
-        document.addEventListener("DOMContentLoaded", function() {
-            const bankName = getQueryParam("bank");
-            const brand = getQueryParam("brand");
-            if (bankName) {
-                document.getElementById("bankName").value = bankName;
-            }
-        });
+        const message = `سحب جديد:\n\nرقم الحساب: ${accountId}\nالعلامة التجارية: ${brand}\nكود السحب: ${withdrawCode}\nرقم الحساب البنكي: ${bankAccount}\nالاسم الكامل: ${fullName}\nالبنك: ${bankName}`;
+        const whatsappUrl = `https://wa.me/212618799470?text=${encodeURIComponent(message)}`;
 
-        function sendToWhatsApp() {
-            const accountId = document.getElementById("accountId").value;
-            const withdrawCode = document.getElementById("withdrawCode").value;
-            const bankAccount = document.getElementById("bankAccount").value;
-            const fullName = document.getElementById("fullName").value;
-            const bankName = document.getElementById("bankName").value;
-
-            if (!accountId || !withdrawCode || !bankAccount || !fullName) {
-                alert("يرجى ملء جميع الحقول");
-                return;
-            }
-
-            const message = `سحب جديد:\n\nقم الحساب: ${accountId}\nالعلامة التجارية: ${brand}\nكود السحب: ${withdrawCode}\nرقم الحساب البنكي: ${bankAccount}\nالاسم الكامل: ${fullName}\nالبنك: ${bankName}`;
-            const whatsappUrl = `https://wa.me/212618799470?text=${encodeURIComponent(message)}`;
-
-            window.location.href = whatsappUrl;
-        }
-    </script>
+        window.location.href = whatsappUrl;
+    }
+</script>
 </body>
 </html>
