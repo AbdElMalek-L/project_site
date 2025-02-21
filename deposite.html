@@ -15,77 +15,77 @@
     
     <section id="collection" class="collection">
         <div class="container">
-            <h2>طريقة الدفع</h2>
+            <h2>طرق الدفع</h2>
             <div class="collection-grid">
                 <div class="product-card">
-                    <img src="src/imgs/cash-plus.jpg" alt="Inwi Morocco">
-                    <div class="product-info">
-                        <h3>CashPlus</h3>
-                        <p class="price">06.18.79.94.70</p>
-                        <a class="add-to-cart" data-bank="CashPlus">متابعة</a>
-                    </div>
+                        <!-- <h3>CashPlus</h3> -->
+                        <!-- <p class="price">06.18.79.94.70</p> -->
+                        <a class="bank-btn" data-bank="CashPlus">
+                            <img  src="src/imgs/cash-plus.jpg" alt="Inwi Morocco">
+
+                        </a>
                 </div>
 
                 <div class="product-card">
-                    <img src="src/imgs/inwi-morocco.png" alt="Inwi Morocco">
-                    <div class="product-info">
-                        <h3>التعبئة السريعة</h3>
-                        <p class="price">07.00.22.80.22</p>
-                        <a class="add-to-cart" data-bank="Inwi">متابعة</a>
+                        <!-- <h3>التعبئة السريعة</h3>
+                        <p class="price">07.00.22.80.22</p> -->
+                        <a class="bank-btn" data-bank="Inwi">
+                            <img src="src/imgs/inwi-morocco.png" alt="Inwi Morocco">
+
+                        </a>
                     </div>
+                
+                <div class="product-card">
+                        <!-- <h3>INWI Money</h3>
+                        <p class="price">06.18.79.94.70</p> -->
+                        <a class="bank-btn" data-bank="INWIMoney">
+                            <img src="src/imgs/inwimony.png" alt="INWI Money">
+
+                        </a>
                 </div>
                 
                 <div class="product-card">
-                    <img src="src/imgs/inwimony.png" alt="INWI Money">
-                    <div class="product-info">
-                        <h3>INWI Money</h3>
-                        <p class="price">06.18.79.94.70</p>
-                        <a class="add-to-cart" data-bank="INWIMoney">متابعة</a>
-                    </div>
+                        <!-- <h3>Attijariwafa bank</h3>
+                        <p class="price">007575000788400030310788</p> -->
+                        <a class="bank-btn" data-bank="Attijariwafabank">
+                            <img src="src/imgs/attijari-container.png" alt="Attijariwafa bank">
+
+                        </a>
                 </div>
                 
                 <div class="product-card">
-                    <img src="src/imgs/attijari-container.png" alt="Attijariwafa bank">
-                    <div class="product-info">
-                        <h3>Attijariwafa bank</h3>
-                        <p class="price">007575000788400030310788</p>
-                        <a class="add-to-cart" data-bank="Attijariwafabank">متابعة</a>
-                    </div>
-                </div>
-                
-                <div class="product-card">
-                    <img src="src/imgs/31951.png" alt="Orange express">
-                    <div class="product-info">
-                        <h3>التعبئة السريعة</h3>
-                        <p class="price">06.12.75.61.55</p>
-                        <a class="add-to-cart" data-bank="Orange express">متابعة</a>
-                    </div>
+                        <!-- <h3>التعبئة السريعة</h3>
+                        <p class="price">06.12.75.61.55</p> -->
+                        <a class="bank-btn" data-bank="Orange express">
+                            <img src="src/imgs/31951.png" alt="Orange express">
+
+                        </a>
                 </div>
         
 
                 <div class="product-card">
-                    <img src="src/imgs/21951.png" alt="CIH Bank">
-                    <div class="product-info">
-                        <h3>CIH Bank</h3>
-                        <p class="price">3188317211016200</p>
-                        <a  data-bank="CIHBank" class="add-to-cart">متابعة</a>
-                    </div>
+                        <!-- <h3>CIH Bank</h3>
+                        <p class="price">3188317211016200</p> -->
+                        <a  data-bank="CIHBank" class="bank-btn">
+                            <img src="src/imgs/21951.png" alt="CIH Bank">
+
+                        </a>
                 </div>
                 <div class="product-card">
-                    <img src="src/imgs/41951.png" alt="Albarid Bank">
-                    <div class="product-info">
-                        <h3>AlBarid Bank</h3>
-                        <p class="price">11915391</p>
-                        <a  data-bank="AlBaridBank" class="add-to-cart">متابعة</a>
-                    </div>
+                        <!-- <h3>AlBarid Bank</h3>
+                        <p class="price">11915391</p> -->
+                        <a  data-bank="AlBaridBank" class="bank-btn">
+                            <img src="src/imgs/41951.png" alt="Albarid Bank">
+
+                        </a>
                 </div>
                 <div class="product-card">
-                    <img src="src/imgs/51951.png" alt="Jibi">
-                    <div class="product-info">
-                        <h3>Jibi</h3>
-                        <p class="price">06.18.79.94.70</p>
-                        <a  data-bank="Jibi" class="add-to-cart">متابعة</a>
-                    </div>
+                        <!-- <h3>Jibi</h3>
+                        <p class="price">06.18.79.94.70</p> -->
+                        <a  data-bank="Jibi" class="bank-btn">
+                            <img src="src/imgs/51951.png" alt="Jibi">
+
+                        </a>
                 </div>
             </div>
         </div>
@@ -135,7 +135,7 @@
             return;
         }
     
-        const buttons = document.querySelectorAll('.add-to-cart');
+        const buttons = document.querySelectorAll('.bank-btn');
         buttons.forEach(button => {
             const bank = button.getAttribute('data-bank');
             const targetPage = serviceType === "1" ? 'servicef.html' : 'depositef.html'; // Use strict comparison
