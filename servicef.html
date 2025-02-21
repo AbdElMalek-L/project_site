@@ -5,14 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>إرسال طلب</title>
     <link rel="stylesheet" href="styles.css">
-    <style >body {
-        background: aliceblue;
-    }
-    .hero{
-        height: 30px;
-    }
+    <style>
+        body {
+            background: aliceblue;
+            font-family: Arial, sans-serif;
+        }
+        .hero {
+            height: 30px;
+        }
+        .bank-info {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin: 20px 0;
+            text-align: center;
+        }
+        .bank-info img {
+            max-width: 200px;
+            height: auto;
+            margin-bottom: 15px;
+        }
+        .bank-info p {
+            margin: 5px 0;
+            font-size: 16px;
+        }
     </style>
-
 </head>
 <body>
     <header class="hero">
@@ -23,30 +41,21 @@
             <div class="nav-links">
                 <a href="contact.html">اتصل بنا</a>
             </div>
-            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
         </nav>
-
-        <div class="mobile-menu">
-            <a href="contact.html">اتصل بنا</a>
-        </div>
     </header>
-
     <main class="container">
+        <div class="container">
+            <h2 class="note">معلومات الحساب البنكي</h2>
+            <div id="bankDetails" class="bank-info">تحميل...</div>
+        </div>
         <section class="form-container">
             <input type="text" class="form-input" id="userName" placeholder="رقم الحساب (ID)">
-            <h2 class="warning">ملاحظة :</h2>
-            <h2 class="note">إرسال  وصل التحويل  عبر الواتساب</h2>
-
+            <h2 class="note">إرسال وصل التحويل عبر الواتساب</h2>
             <button class="whatsapp" onclick="sendToWhatsApp()">
                 إرسال عبر واتساب
             </button>
         </section>
     </main>
-
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
@@ -62,38 +71,64 @@
             </div>
         </div>
     </footer>
-
     <script>
-function sendToWhatsApp() {
-    // Get brand name from URL parameters
-    const urlParams = new URLSearchParams(window.location.search);
-    const brandName = urlParams.get('brand');
-    const bank = urlParams.get('bank');
-    
-    // Get user name from input field
-    const userName = document.getElementById('userName').value;
+        const urlParams = new URLSearchParams(window.location.search);
+        const bank = urlParams.get('bank');
+        
+        const bankAccounts = {
+            "CashPlus": { 
+                "accountNumber": "06.18.79.94.70", 
+                "accountHolder": "EL HASSAN EL JABBOURY",
+                "logoSrc": "src/imgs/cash-plus.jpg"
+            },
+            "Inwi": { 
+                "accountNumber": "07.00.22.80.22", 
+                "accountHolder": "EL HASSAN EL JABBOURY",
+                "logoSrc": "src/imgs/inwi-morocco.png"
+            },
+            "INWIMoney": { 
+                "accountNumber": "06.18.79.94.70", 
+                "accountHolder": "EL HASSAN EL JABBOURY",
+                "logoSrc": "src/imgs/inwimony.png"
+            },
+            "AttijariwafaBank": { 
+                "accountNumber": "007575000788400030310788", 
+                "accountHolder": "EL HASSAN EL JABBOURY",
+                "logoSrc": "src/imgs/attijari-container.png"
+            },
+            "OrangeExpress": { 
+                "accountNumber": "06.12.75.61.55", 
+                "accountHolder": "EL HASSAN EL JABBOURY",
+                "logoSrc": "src/imgs/31951.png"
+            },
+            "CIHBank": { 
+                "accountNumber": "3188317211016200", 
+                "accountHolder": "EL HASSAN EL JABBOURY",
+                "logoSrc": "src/imgs/21951.png"
+            },
+            "AlBaridBank": { 
+                "accountNumber": "11915391", 
+                "accountHolder": "EL HASSAN EL JABBOURY",
+                "logoSrc": "src/imgs/41951.png"
+            },
+            "Jibi": { 
+                "accountNumber": "06.18.79.94.70", 
+                "accountHolder": "EL HASSAN EL JABBOURY",
+                "logoSrc": "src/imgs/51951.png"
+            }
+        };
 
-    // Validate both fields
-    if (!userName) {
-        alert('يرجى ملء رقم الحساب (ID)');
-        return;
-    }
-
-    // Create message template
-    const message = `شحن جديد:
-العلامة التجارية: ${brandName}
-بنك : ${bank}
-ID: ${userName}`;
-
-    // Encode message for URL
-    const encodedMessage = encodeURIComponent(message);
-    
-    // Create WhatsApp link
-    const whatsappLink = `https://wa.me/212618799470?text=${encodedMessage}`;
-    
-    // Open in new tab
-    window.open(whatsappLink, '_blank');
-}
+        const bankDetailsElement = document.getElementById("bankDetails");
+        if (bankDetailsElement) {
+            if (bankAccounts[bank]) {
+                bankDetailsElement.innerHTML = `
+                    <img src="${bankAccounts[bank].logoSrc}" alt="${bank} logo">
+                    <p>رقم الحساب: ${bankAccounts[bank].accountNumber}</p>
+                    <p>المستفيد: ${bankAccounts[bank].accountHolder}</p>`;
+            } else {
+                bankDetailsElement.innerText = "لا توجد معلومات لهذا البنك.";
+            }
+        }
     </script>
 </body>
 </html>
