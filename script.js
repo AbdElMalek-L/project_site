@@ -78,3 +78,4 @@ document.querySelectorAll('.feature-card, .product-card').forEach(card => {
     card.style.transition = 'all 0.5s ease-out';
     observer.observe(card);
 });
+

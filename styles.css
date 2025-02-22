@@ -135,10 +135,10 @@ body {
 
 .quality-badge {
     position: absolute;
-    bottom: -80px;
-    right: -30px;
+    bottom: -10px;
+    right: -50px;
     background: white;
-    padding: 20px;
+    padding: 5px;
     border-radius: 9px;
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
 }
@@ -839,4 +839,34 @@ body {
 
         .embtyspace{
             height: 50px;
+        }
+
+
+
+        .slideshow-container {
+            position: relative;
+            max-width: 600px;
+            margin: auto;
+            overflow: hidden;
+        }
+        .slides {
+            display: none;
+            width: 100%;
+            transition: opacity 1s ease-in-out;
+        }
+        .active {
+            display: block;
+            opacity: 1;
+        }
+
+        .controls button {
+            color: white;
+            border: none;
+            margin: 10px;
+            padding: 10px 15px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .controls button:hover {
+            background-color: rgba(0, 0, 0, 0.8);
         }

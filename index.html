@@ -37,8 +37,19 @@
                 </a>
             </div>
             <div class="hero-image">
-                <img src="src\imgs\poster.jpg" 
-                     alt="CHARGE RAPIDE">
+
+
+                <div class="slideshow-container">
+                    <img class="slides" src="src\imgs\poster.jpg">
+                    <img class="slides" src="src\imgs\poster2.jpg">
+                    <img class="slides" src="src\imgs\poster3.jpg">
+                    <div class="controls">
+                        <button class="whatsapp" onclick="prevSlide()">&#10094; السابق</button>
+                        <button class="whatsapp" onclick="nextSlide()">التالي &#10095;</button>
+                    </div>
+                </div>
+     
+
                 <div class="quality-badge">
                     <p class="badge-subtitle">:CodePromo</p>
                     <p class="badge-title">JBR49</p>
@@ -161,7 +172,31 @@
 
     <script src="script.js"></script>
     <script>
+        let slideIndex = 0;
+        const slides = document.querySelectorAll(".slides");
         
+        function showSlide(index) {
+            slides.forEach(slide => slide.classList.remove("active"));
+            slides[index].classList.add("active");
+        }
+        
+        function nextSlide() {
+            slideIndex = (slideIndex + 1) % slides.length;
+            showSlide(slideIndex);
+        }
+        
+        function prevSlide() {
+            slideIndex = (slideIndex - 1 + slides.length) % slides.length;
+            showSlide(slideIndex);
+        }
+        
+        function autoSlide() {
+            nextSlide();
+            setTimeout(autoSlide, 3000);
+        }
+        
+        showSlide(slideIndex);
+        setTimeout(autoSlide, 3000);
     </script>
 </body>
 </html>
